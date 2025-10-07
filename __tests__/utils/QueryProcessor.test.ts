@@ -33,4 +33,22 @@ describe("QueryProcessor", () => {
             "Rohan"
           ));
     })
+
+    test('should return the largest number', () => {
+        const query = "Which of the following numbers is the largest: 26, 29, 48?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("48");
+    })
+
+    test('should handle addition queries', () => {
+        const query = "What is 36 plus 47?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("83");
+    })
+
+    test('should handle another addition query', () => {
+        const query = "What is 32 plus 34?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("66");
+    })
 });

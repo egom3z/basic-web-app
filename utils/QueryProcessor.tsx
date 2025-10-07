@@ -17,5 +17,21 @@ export default function QueryProcessor(query: string): string {
     return "Rohan";
   }
 
+  if (query.toLowerCase().includes("which of the following numbers is the largest:")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers) {
+      const maxNumber = Math.max(...numbers.map(Number));
+      return maxNumber.toString();
+    }
+  }
+
+  // Handle addition queries like "What is 32 plus 34?"
+  const additionMatch = query.match(/what is (\d+) plus (\d+)/i);
+  if (additionMatch) {
+    const num1 = parseInt(additionMatch[1]);
+    const num2 = parseInt(additionMatch[2]);
+    return (num1 + num2).toString();
+  }
+
   return "";
 }
